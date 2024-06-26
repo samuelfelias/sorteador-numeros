@@ -13,8 +13,13 @@ function sortear(){
     let quantidade = parseInt(document.getElementById("quantidade").value)
     let de = parseInt(document.getElementById("de").value)
     let ate = parseInt(document.getElementById("ate").value)
-    if(de > ate){
+    if(de >= ate){
         alert(" ERRO! O valor minimo não pode ser maior que o máximo!")
+        return;
+    }
+    if(quantidade > (ate - de)){
+        alert(`Impossivel gerar ${quantidade} números em um intervalo de ${ate - de} numeros!`)
+        return;
     }
     let listaNumeros = []
 
@@ -23,6 +28,7 @@ function sortear(){
 
         while(listaNumeros.includes(numero)){
             numero = obterNumeroAleatorio(de, ate)
+            alert('Tentando obter número inédito');
         }
         listaNumeros.push(numero)
     }
